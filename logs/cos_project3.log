@@ -22769,3 +22769,112 @@ Traceback (most recent call last):
     raise VariableDoesNotExist("Failed lookup for key "
 django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'app.urls' from '/home/ubuntu/cos_project3/app/urls.py'> (app:app) 'app/'>
 [24/Sep/21 16:22:41] WARNING [django.request:224] Not Found: /static/rest_framework/js/default.js
+[27/Sep/21 23:43:01] DEBUG [django.db.backends:123] (0.091) 
+                SELECT VERSION(),
+                       @@sql_mode,
+                       @@default_storage_engine,
+                       @@sql_auto_is_null,
+                       @@lower_case_table_names,
+                       CONVERT_TZ('2001-01-01 01:00:00', 'UTC', 'UTC') IS NOT NULL
+            ; args=None
+[27/Sep/21 23:43:01] DEBUG [django.db.backends:123] (0.002) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+[27/Sep/21 23:43:01] DEBUG [django.db.backends:123] (0.234) SELECT `cos`.`prdname` FROM `cos`; args=()
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.004) 
+                SELECT VERSION(),
+                       @@sql_mode,
+                       @@default_storage_engine,
+                       @@sql_auto_is_null,
+                       @@lower_case_table_names,
+                       CONVERT_TZ('2001-01-01 01:00:00', 'UTC', 'UTC') IS NOT NULL
+            ; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.000) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) 
+                SELECT VERSION(),
+                       @@sql_mode,
+                       @@default_storage_engine,
+                       @@sql_auto_is_null,
+                       @@lower_case_table_names,
+                       CONVERT_TZ('2001-01-01 01:00:00', 'UTC', 'UTC') IS NOT NULL
+            ; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.000) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.018) SHOW FULL TABLES; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.007) SELECT `django_migrations`.`id`, `django_migrations`.`app`, `django_migrations`.`name`, `django_migrations`.`applied` FROM `django_migrations`; args=()
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SHOW FULL TABLES; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_migrations`.`id`, `django_migrations`.`app`, `django_migrations`.`name`, `django_migrations`.`applied` FROM `django_migrations`; args=()
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SHOW FULL TABLES; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SHOW FULL TABLES; args=None
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_migrations`.`id`, `django_migrations`.`app`, `django_migrations`.`name`, `django_migrations`.`applied` FROM `django_migrations`; args=()
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.017) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'admin'; args=('admin',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.003) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'admin' AND `django_content_type`.`model` = 'logentry') LIMIT 21; args=('admin', 'logentry')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.012) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (1) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(1,)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.000) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'admin'; args=('admin',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'auth'; args=('auth',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'auth' AND `django_content_type`.`model` = 'permission') LIMIT 21; args=('auth', 'permission')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'auth' AND `django_content_type`.`model` = 'group') LIMIT 21; args=('auth', 'group')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.006) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (2, 3) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(2, 3)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'auth'; args=('auth',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'contenttypes'; args=('contenttypes',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'contenttypes' AND `django_content_type`.`model` = 'contenttype') LIMIT 21; args=('contenttypes', 'contenttype')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (4) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(4,)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'contenttypes'; args=('contenttypes',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'sessions'; args=('sessions',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'sessions' AND `django_content_type`.`model` = 'session') LIMIT 21; args=('sessions', 'session')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (5) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(5,)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'sessions'; args=('sessions',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'app'; args=('app',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'app' AND `django_content_type`.`model` = 'cos') LIMIT 21; args=('app', 'cos')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'app' AND `django_content_type`.`model` = 'imageupload') LIMIT 21; args=('app', 'imageupload')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'app' AND `django_content_type`.`model` = 'letter') LIMIT 21; args=('app', 'letter')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.003) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (8, 6, 7) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(8, 6, 7)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'app'; args=('app',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.003) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'common'; args=('common',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'common' AND `django_content_type`.`model` = 'qa') LIMIT 21; args=('common', 'qa')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'common' AND `django_content_type`.`model` = 'user') LIMIT 21; args=('common', 'user')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.003) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (9, 10) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(9, 10)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'common'; args=('common',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'django_celery_results'; args=('django_celery_results',)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'django_celery_results' AND `django_content_type`.`model` = 'taskresult') LIMIT 21; args=('django_celery_results', 'taskresult')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'django_celery_results' AND `django_content_type`.`model` = 'chordcounter') LIMIT 21; args=('django_celery_results', 'chordcounter')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`app_label` = 'django_celery_results' AND `django_content_type`.`model` = 'groupresult') LIMIT 21; args=('django_celery_results', 'groupresult')
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.002) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (11, 12, 13) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(11, 12, 13)
+[27/Sep/21 23:46:30] DEBUG [django.db.backends:123] (0.001) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'django_celery_results'; args=('django_celery_results',)
+[27/Sep/21 23:50:56] DEBUG [django.db.backends:123] (0.039) 
+                SELECT VERSION(),
+                       @@sql_mode,
+                       @@default_storage_engine,
+                       @@sql_auto_is_null,
+                       @@lower_case_table_names,
+                       CONVERT_TZ('2001-01-01 01:00:00', 'UTC', 'UTC') IS NOT NULL
+            ; args=None
+[27/Sep/21 23:50:56] DEBUG [django.db.backends:123] (0.002) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+[27/Sep/21 23:50:56] DEBUG [django.db.backends:123] (0.007) SELECT `cos`.`prdname` FROM `cos`; args=()
+[28/Sep/21 00:00:11] DEBUG [django.db.backends:123] (0.074) 
+                SELECT VERSION(),
+                       @@sql_mode,
+                       @@default_storage_engine,
+                       @@sql_auto_is_null,
+                       @@lower_case_table_names,
+                       CONVERT_TZ('2001-01-01 01:00:00', 'UTC', 'UTC') IS NOT NULL
+            ; args=None
+[28/Sep/21 00:00:11] DEBUG [django.db.backends:123] (0.001) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+[28/Sep/21 00:00:11] DEBUG [django.db.backends:123] (0.013) SELECT `cos`.`prdname` FROM `cos`; args=()
+[28/Sep/21 00:38:26] DEBUG [django.db.backends:123] (0.029) 
+                SELECT VERSION(),
+                       @@sql_mode,
+                       @@default_storage_engine,
+                       @@sql_auto_is_null,
+                       @@lower_case_table_names,
+                       CONVERT_TZ('2001-01-01 01:00:00', 'UTC', 'UTC') IS NOT NULL
+            ; args=None
+[28/Sep/21 00:38:26] DEBUG [django.db.backends:123] (0.001) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+[28/Sep/21 00:38:26] DEBUG [django.db.backends:123] (0.039) SELECT `cos`.`prdname` FROM `cos`; args=()
+[28/Sep/21 00:43:24] DEBUG [django.db.backends:123] (0.035) 
+                SELECT VERSION(),
+                       @@sql_mode,
+                       @@default_storage_engine,
+                       @@sql_auto_is_null,
+                       @@lower_case_table_names,
+                       CONVERT_TZ('2001-01-01 01:00:00', 'UTC', 'UTC') IS NOT NULL
+            ; args=None
+[28/Sep/21 00:43:24] DEBUG [django.db.backends:123] (0.000) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+[28/Sep/21 00:43:24] DEBUG [django.db.backends:123] (0.031) INSERT INTO `cos` (`id`, `brand`, `image`, `ingredient`, `prdname`, `price`) VALUES (NULL, '바이비드', 'https://contents.lotteon.com/itemimage/LB/PD/10/01/10/54/_1/75/28/LBPD10011054_17528_1.jpg/dims/resizef/554X554', '정제수, 부틸렌글라이콜,글리세린, 글루코오스, 1,2-헥산디올, 폴리글리세릴-10카프릴레이트/카프레이트,알로에베라잎추출물, 셀룰로오스검,진탐검,우레아,다이프로필렌글라이콜,제올라이트,토코페롤아세테이트,버지니아풍년화추출물,페녹시에탄올,덱스트린,말토덱스트린, 하이드롤라이즈드콜라겐, 에틸헥실글리세린, 소듐하이알루로네이트, 티트리추출물,글라이신,글루타믹애씨드,라이신,류신,메티오닌,발린,세린,시스테인,아스파틱애씨드,아이소류신,알라닌,알지닌,타이로신,트레오닌,페닐알라닌,프롤린,히스티딘,향료', '인앤아웃 페이셜 마스크', '4,900원'), (NULL, '메디힐', 'https://contents.lotteon.com/itemimage/LB/PD/10/00/66/54/_1/01/33/LBPD10006654_10133_1.jpg/dims/resizef/554X554', '상세페이지 참조', '캡슐100 바이오 세컨덤 [하이드로 베타]', '2,500원'), (NULL, '아크네스', 'https://contents.lotteon.com/itemimage/LB/PD/10/01/63/72/_2/53/68/LBPD10016372_25368_1.jpg/dims/resizef/554X554', '정제수, 메틸프로판다이올, 달맞이꽃추출물, 당느릅나무뿌리추출물, 대왕송잎추출물, 칡뿌리추출물, 알로에베라잎추출물, 병풀추출물, 올레라케아아크멜라추출물, 에난티아 클로란타껍질추출물, 실론시나몬나무껍질추출물, 빌베리열매추출물, 사탕수수추출물, 레몬추출물, 오렌지추출물, 설탕단풍추출물, 베르가모트오일, 소듐하이알루로네이트, 폴리글리세릴-10라우레이트, 나이아신아마이드, 암모늄아크릴로일다이메틸타우레이트/브이피코폴리머, 부틸렌글라이콜, 다이소듐이디티에이, 카프릴로일글라이신, 트로메타민, 헥실렌글라이콜, 락틱애씨드, 베타인살리실레이트, 사코신, 소듐라우레이트, 라우릭애씨드, 글루코노락톤, 글리세린, 올레아놀릭애씨드, 소듐하이알루로네이트크로스폴리머, 하이드롤라이즈드하이알루로닉애씨드, 하이알루로닉애씨드, 노나펩타이드-1, 아세틸헥사펩타이드-8, 카퍼트라이펩타이드-1, 트라이펩타이드-1, 팔미토일테트라펩타이드-7, 팔미토일트라이펩타이드-1, 팔미토일펜타펩타이드-4, 하이드롤라이즈드소듐하이알루로네이트, 헥사펩타이드-9, 1,2-헥산다이올, 하이드록시아세토페논, 펜틸렌글라이콜, 카프릴릴글라이콜, 에틸헥실글리세린, 리모넨, 리날룰', '포어타이트닝 패드 70매', '15,600원'); args=(None, '바이비드', 'https://contents.lotteon.com/itemimage/LB/PD/10/01/10/54/_1/75/28/LBPD10011054_17528_1.jpg/dims/resizef/554X554', '정제수, 부틸렌글라이콜,글리세린, 글루코오스, 1,2-헥산디올, 폴리글리세릴-10카프릴레이트/카프레이트,알로에베라잎추출물, 셀룰로오스검,진탐검,우레아,다이프로필렌글라이콜,제올라이트,토코페롤아세테이트,버지니아풍년화추출물,페녹시에탄올,덱스트린,말토덱스트린, 하이드롤라이즈드콜라겐, 에틸헥실글리세린, 소듐하이알루로네이트, 티트리추출물,글라이신,글루타믹애씨드,라이신,류신,메티오닌,발린,세린,시스테인,아스파틱애씨드,아이소류신,알라닌,알지닌,타이로신,트레오닌,페닐알라닌,프롤린,히스티딘,향료', '인앤아웃 페이셜 마스크', '4,900원', None, '메디힐', 'https://contents.lotteon.com/itemimage/LB/PD/10/00/66/54/_1/01/33/LBPD10006654_10133_1.jpg/dims/resizef/554X554', '상세페이지 참조', '캡슐100 바이오 세컨덤 [하이드로 베타]', '2,500원', None, '아크네스', 'https://contents.lotteon.com/itemimage/LB/PD/10/01/63/72/_2/53/68/LBPD10016372_25368_1.jpg/dims/resizef/554X554', '정제수, 메틸프로판다이올, 달맞이꽃추출물, 당느릅나무뿌리추출물, 대왕송잎추출물, 칡뿌리추출물, 알로에베라잎추출물, 병풀추출물, 올레라케아아크멜라추출물, 에난티아 클로란타껍질추출물, 실론시나몬나무껍질추출물, 빌베리열매추출물, 사탕수수추출물, 레몬추출물, 오렌지추출물, 설탕단풍추출물, 베르가모트오일, 소듐하이알루로네이트, 폴리글리세릴-10라우레이트, 나이아신아마이드, 암모늄아크릴로일다이메틸타우레이트/브이피코폴리머, 부틸렌글라이콜, 다이소듐이디티에이, 카프릴로일글라이신, 트로메타민, 헥실렌글라이콜, 락틱애씨드, 베타인살리실레이트, 사코신, 소듐라우레이트, 라우릭애씨드, 글루코노락톤, 글리세린, 올레아놀릭애씨드, 소듐하이알루로네이트크로스폴리머, 하이드롤라이즈드하이알루로닉애씨드, 하이알루로닉애씨드, 노나펩타이드-1, 아세틸헥사펩타이드-8, 카퍼트라이펩타이드-1, 트라이펩타이드-1, 팔미토일테트라펩타이드-7, 팔미토일트라이펩타이드-1, 팔미토일펜타펩타이드-4, 하이드롤라이즈드소듐하이알루로네이트, 헥사펩타이드-9, 1,2-헥산다이올, 하이드록시아세토페논, 펜틸렌글라이콜, 카프릴릴글라이콜, 에틸헥실글리세린, 리모넨, 리날룰', '포어타이트닝 패드 70매', '15,600원')

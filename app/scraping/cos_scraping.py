@@ -11,10 +11,14 @@ from app.models import Cos
 
 import asyncio
 import logging
-
+import os
+from pathlib import Path
+import json
 
 class scraping:
     cosmetic = cache.get_or_set('cosmetic', Cos.objects.values('prdname'))
+    with open('./cos_project3_settings.json') as f:
+        secret = json.loads(f.read())
 
     def __init__(self, idx):
         self.redis3 = redis.StrictRedis(host='127.0.0.1', port=6379, db=3)  # 상세 페이지 html 가져오기 위함
@@ -35,13 +39,13 @@ class scraping:
 
     def detailed_page(self, url):
         # 새 이벤트 루프 생성
-        new_loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(new_loop)
+        #new_loop = asyncio.new_event_loop()
+        #asyncio.set_event_loop(new_loop)
 
         session = HTMLSession()
         # logging.basicConfig(filename='recos_scraper.log', level=logging.DEBUG)
         r = session.get(url)
-        r.html.render(scrolldown=3, timeout=20)
+        r.html.render(scrolldown=3, timeout=40)
         session.close()
         return r
 
@@ -73,7 +77,7 @@ class scraping:
         start_idx = self.idx  # 밑에서 enumerate 돌 때, key로 사용할 시작점으로 사용하기 위함.
 
         while True:
-            url = f'https://www.lotteon.com/search/render/render.ecn?&u2={self.idx}&u3=60&u9=navigateProduct&render=nqapi&platform=pc&collection_id=401&login=Y&u4=lb10100005'
+            url = scraping.secret['django']['scraping'].format(self.idx)
             main_html = urllib.request.urlopen(url).read().decode('utf-8')
             link_list = self.get_links(main_html)
 
@@ -99,7 +103,8 @@ class scraping:
                 # res = asyncio.run(self.detailed_page(i))
             except Exception as e:  # 예외 발생할 경우, 에러 이름 출력하고 다음 for문 부터 출력
                 print(j, '번에서', e, '발생')
-                continue
+                #continue
+                break
 
             # redis 서버에 html을 문자열로 바꾼 후 캐싱하기.
             # html 파일 객체로 담을 수는 없는지 찾아볼 것.

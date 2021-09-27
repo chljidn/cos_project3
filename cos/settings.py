@@ -30,7 +30,8 @@ with open(secret_file) as f:
     secret = json.loads(f.read())
 
 # secret key 환경변수 설정
-SECRET_KEY = os.environ['cos_project3_secret_key']
+#SECRET_KEY = os.environ["cos_project3_secret_key"]
+SECRET_KEY = secret['django']['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
