@@ -6,8 +6,6 @@ class ImageUpload(models.Model):
     title = models.CharField(max_length = 100)
     pic = models.ImageField(upload_to='imageupload') #저장 디렉터리 : media/imageupload
 
-    #class meta:
-    #    db_table = 'ImageUpload'
     def __str__(self):
         return self.title
 

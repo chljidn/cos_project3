@@ -1,18 +1,14 @@
 # html parser api
 import urllib.request
 import re
-from requests_html import HTMLSession, AsyncHTMLSession
-from bs4 import BeautifulSoup as bs
-import redis
+from requests_html import HTMLSession
 
-# 데이터 베이스와 캐시 연결(데이터베이스에서 화장품 데이터 가져오기 위함)
+# 데이터 베이스 및 캐시
+import redis
 from django.core.cache import cache
 from app.models import Cos
 
-import asyncio
-import logging
-import os
-from pathlib import Path
+from bs4 import BeautifulSoup as bs
 import json
 
 class scraping:
@@ -43,31 +39,10 @@ class scraping:
         #asyncio.set_event_loop(new_loop)
 
         session = HTMLSession()
-        # logging.basicConfig(filename='recos_scraper.log', level=logging.DEBUG)
         r = session.get(url)
         r.html.render(scrolldown=3, timeout=40)
         session.close()
         return r
-
-    # async def detailed_page(self, url):
-    #    new_loop = asyncio.new_event_loop()
-    #    asyncio.set_event_loop(new_loop)
-
-    #   asession = AsyncHTMLSession()
-
-    # browser = await pyppeteer.launch({
-    #    'ignoreHTTPSErrors': True,
-    #    'headless': True,
-    #    'handleSIGINT': False,
-    #    'handleSIGTERM': False,
-    #    'handleSIGHUP': False
-    # })
-    # asession._browser = browser
-
-    #    r = await asession.get(url)
-    #    await r.html.arender(scrolldown=3, timeout=20)
-    #    await asession.close()
-    #    return r
 
     def lobs(self):
 
@@ -96,15 +71,10 @@ class scraping:
             try:
                 res = self.detailed_page(i)
 
-                # loop = asyncio.get_event_loop()
-                # asyncio.set_event_loop(loop)
-                # res = loop.run_until_complete(self.detailed_page(i))
-                # loop.close()
-                # res = asyncio.run(self.detailed_page(i))
-            except Exception as e:  # 예외 발생할 경우, 에러 이름 출력하고 다음 for문 부터 출력
+            # 추후 LOG 파일로 변환 예
+            except Exception as e:  # 예외 발생할 정경우, 에러 이름 출력하고 다음 for문 부터 출력
                 print(j, '번에서', e, '발생')
-                #continue
-                break
+                continue
 
             # redis 서버에 html을 문자열로 바꾼 후 캐싱하기.
             # html 파일 객체로 담을 수는 없는지 찾아볼 것.
@@ -118,9 +88,10 @@ class scraping:
             # 예외가 발생하거나, 아예 html이 없는 경우 캐싱된 파일이 없을 수 있으므로 이 경우는 그냥 continue로 넘어간다.
             if not b: continue
 
-            b = b.decode()  # 캐시에 저장될 때, 바이트로 타입으로 저장되므로 가져와서 다시 str로 인코딩
+            # 캐시에 저장될 때, 바이트 타입으로 저장되므로 가져와서 다시 str로 인코딩
+            b = b.decode()
             c = self.get_ingredient(b)
-            bb = bs(b, 'html.parser')  # beautifulsoup(name, price, brand 뽑아내기 위함)
+            bb = bs(b, 'html.parser')
 
             # 전성분이 없을 경우 continue
             if c == []: continue

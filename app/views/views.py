@@ -48,8 +48,11 @@ class image_upload(APIView):
 # -------- 화장품 리스트 페이지 -------------------------------------------------------------------------------
 class cos_list(APIView):
     def get(self, request):
+        start = request.GET.get('start')
+        end = request.GET.get('end')
         # 가격, 브랜드, 상품이름, 주요성분, 카테고리만 출력.
-        coslist = cache.get_or_set('coslist', Cos.objects.filter().values('brand', 'price', 'prdname', 'ingredient'),timeout=None)
+        coslist = cache.get_or_set('coslist', Cos.objects.filter(id__range=(start, end))
+                                   .values('brand', 'price', 'prdname', 'ingredient'),timeout=None)
         cos_serializer = CosSerializer(coslist, many = True)
         return Response(cos_serializer.data)
 

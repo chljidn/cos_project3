@@ -7,7 +7,3 @@ from app.scraping.cos_scraping import scraping
 def scraping_scheduling():
     sc = scraping(1)
 
-# 이건 시험용
-#@shared_task(name='hello.add')
-#def hello():
-#    print('hello')
