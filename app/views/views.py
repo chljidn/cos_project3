@@ -46,6 +46,7 @@ class image_upload(APIView):
 
 
 # -------- 화장품 리스트 페이지 -------------------------------------------------------------------------------
+'''
 class cos_list(APIView):
     def get(self, request):
         start = request.GET.get('start')
@@ -55,6 +56,15 @@ class cos_list(APIView):
                                    .values('brand', 'price', 'prdname', 'ingredient'),timeout=None)
         cos_serializer = CosSerializer(coslist, many = True)
         return Response(cos_serializer.data)
+'''
+class cos_list(generics.ListAPIView):
+    queryset = cache.get_or_set('coslist', Cos.objects.filter().values('brand', 'image','price','prdname','ingredient').distinct())
+    serializer_class = CosSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['brand', 'image', 'price', 'prdname', 'ingredient']
+
+
+
 
 
 

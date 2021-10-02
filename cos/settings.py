@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'rest_framework',
     'django_celery_results',
+    'corsheaders',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -175,3 +177,11 @@ CELERY_TIMEZONE = 'Asia/Seoul'
 
 # model- id_autofield
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# vue와 csrftoken 설정 맞추기
+CSRF_COOKIE_NAME = 'XSRF-TOKEN'
+CSRF_HEADER_NAME = 'X-XSRF-TOKEN'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend')
+}
