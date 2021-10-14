@@ -9,13 +9,14 @@ django, mariadb, nginx, uwsgi, aws, celery, redis, vue.js
 Q&A 리스트, Q&A 작성, Q&A 수정
 스크래핑(celery를 통한 스케줄링, db : redis, 메시지 브로커: redis)
       
-
+    
 ### 프로젝트 구성
 > cos : 프로젝트 디렉토리(settings.py, celery.py)   
 > app : 화장품 데이터 스크래핑 및 업로드(scraping.cos_scraping.py),     
            화장품 성분 이미지업로드(views.py), 화장품 추천(recommend.py)   
 > common : 인증(회원가입(views.signup_views.py) 및 로그인/로그아웃), Q&A(views.qa_views.py)
-             
+         
+          
 ### 인증(회원가입 및 로그인/ 로그아웃) - jwt
 1. 세션 방식(Session Authentication)
 2. 토큰 방식(Token Authentication, Json Web Token Authentication)
