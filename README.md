@@ -22,6 +22,7 @@ Q&A 리스트, Q&A 작성, Q&A 수정,
 2. 토큰 방식(Token Authentication, Json Web Token Authentication)
 * 토큰 방식 중 JsonWebTokenAuthentication(jwt)를 사용한다. rest_framework의 프레임 워크 중에 simplejwt를 이용
 * 다만 TokenAuthentication을 사용할 경우, ObtainAuthToken을 상속받아 사용하면 view에서 사용이 가능하다. jwt의 경우 view가 url에서 바로 매칭되는 형식으로 나와있기 때문에 view에서 모듈을 설치하여 사용하는 방법을 알아볼 필요가 있음.
+* 또한 python 내에 jwt모듈이 따로 있어서 import 한 후에 jwt 토큰으로 encoding 할 수 있음. 이에 대해서도 찾아보는 중.
 
 
 ### 스크래핑 - requests_html, celery
