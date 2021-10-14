@@ -4,10 +4,10 @@ recos - 화장품 추천 서비스
 django, mariadb, nginx, uwsgi, aws, celery, redis, vue.js
 
 ### API
-화장품 리스트, 화장품 추천 리스트(이미지 업로드 api에서 자동 호출)
-회원 리스트, 마이 페이지
-Q&A 리스트, Q&A 작성, Q&A 수정
-스크래핑(celery를 통한 스케줄링, db : redis, 메시지 브로커: redis)
+화장품 리스트, 화장품 추천 리스트(이미지 업로드 api에서 자동 호출)   
+회원 리스트, 마이 페이지   
+Q&A 리스트, Q&A 작성, Q&A 수정,   
+스크래핑(celery를 통한 스케줄링, db : redis, 메시지 브로커: redis)   
       
     
 ### 프로젝트 구성
