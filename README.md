@@ -22,6 +22,17 @@ Q&A 리스트, Q&A 작성, Q&A 수정,
 2. 토큰 방식(Token Authentication, Json Web Token Authentication)
 * 토큰 방식 중 JsonWebTokenAuthentication(jwt)를 사용한다. python과 Django에는 jwt에 대해서 python에는 PyJWT모듈이 있으며, Django의 rest_framework에는 simplejwt가 존재한다.
 * rest_framework의 simplejwt를 이용
+
+    > simplejwt 설치 및 settings.py 추가
+
+        pip install djangorestframework-simplejwt
+
+        # settings.py
+        INSTALLED_APPS = [
+            ...
+            'rest_framework_simplejwt',
+        ]
+        
      > app/serializers.py
 
         # 기존 serializer 상속 후 수정. username이 response 값에 추가된다.
