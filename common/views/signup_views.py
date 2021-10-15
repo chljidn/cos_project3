@@ -14,9 +14,6 @@ from common.models import User
 
 class signup(APIView):
     def post(self, request):
-        print(request.data.get('username'))
-        print(request.POST['username'])
-        print(request.POST.get('username', '0')) # 타입은 세개 모두 str
         password = make_password(request.POST['password']) # 패스워드를 해쉬함수를 통해서 암호화
         user = User.objects.create(username=request.POST['username'],
                            password=password,

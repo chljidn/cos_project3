@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import json
 import os
+from datetime import timedelta
 
 # 예외처리
 from django.core.exceptions import ImproperlyConfigured
@@ -190,5 +191,18 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+
+        # simplejwt
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
+}
+
+#simplejwt 설정
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(hours=1),
+    'BLACKLIST_AFTER_ROTATION':False,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
 }
