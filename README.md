@@ -20,9 +20,24 @@ Q&A 리스트, Q&A 작성, Q&A 수정,
 ### 인증(회원가입 및 로그인/ 로그아웃) - jwt
 1. 세션 방식(Session Authentication)
 2. 토큰 방식(Token Authentication, Json Web Token Authentication)
-* 토큰 방식 중 JsonWebTokenAuthentication(jwt)를 사용한다. rest_framework의 프레임 워크 중에 simplejwt를 이용
-* 다만 TokenAuthentication을 사용할 경우, ObtainAuthToken을 상속받아 사용하면 view에서 사용이 가능하다. jwt의 경우 view가 url에서 바로 매칭되는 형식으로 나와있기 때문에 view에서 모듈을 설치하여 사용하는 방법을 알아볼 필요가 있음.
-* 또한 python 내에 jwt모듈이 따로 있어서 import 한 후에 jwt 토큰으로 encoding 할 수 있음. 이에 대해서도 찾아보는 중.
+* 토큰 방식 중 JsonWebTokenAuthentication(jwt)를 사용한다. python과 Django에는 jwt에 대해서 python에는 PyJWT모듈이 있으며, Django의 rest_framework에는 simplejwt가 존재한다.
+* rest_framework의 simplejwt를 이용
+        
+        # app/serializers.py
+        # 기존 serializer 상속 후 수정. username이 response 값에 추가된다.
+        class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+            def validate(self, attrs):
+                data = super().validate(attrs)
+                refresh = self.get_token(self.user)
+                data['refresh'] = str(refresh)
+                data['access'] = str(refresh.access_token)
+                data['username'] = self.user.username
+                return data
+    
+        # app/views/auth_views.py
+        # {'access': 'accesstoken', 'refresh':'refreshtoken', 'username': 'username'} 형식 값 return
+        class MyTokenObtainPairView(TokenObtainPairView):
+            serializer_class = MyTokenObtainPairSerializer
 
 
 ### 스크래핑 - requests_html, celery
