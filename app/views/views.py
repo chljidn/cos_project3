@@ -3,22 +3,17 @@ from rest_framework.views import  APIView
 from rest_framework.response import Response
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework import generics
-
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-
 # filter
 from django_filters.rest_framework import DjangoFilterBackend
 from app.filters import CosFilter
-
 # serializers 설치
 from app.serializers import CosSerializer
 
 # 모델 설치
 from app.models import ImageUpload, Cos
-
-from app.views import recommend
-
+from app.views.recommend import recommend
 from django.core.cache import cache
 
 # -------- 이미지 업로드 페이지 --------------------------------------
@@ -50,9 +45,6 @@ class image_upload(APIView):
 # -------- 화장품 리스트 페이지 -------------------------------------------------------------------------------
 # filterset를 따로 지정
 class cos_list(generics.ListAPIView):
-    # 인증하지 않은 상태로는 접근할 수 없도록 지정
-    # authentication의 방식은 Token 방식
-    # permission은 정확히 뭔지 찾아볼 것
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
@@ -60,41 +52,3 @@ class cos_list(generics.ListAPIView):
     serializer_class = CosSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = CosFilter
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
