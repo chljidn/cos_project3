@@ -80,11 +80,12 @@ class recommend:
         ffflist = sorted(ffflist, reverse=True)
         result = {}
         for i in range(10):
-            result[i] = {'prdname': data2[i].prdname,
-                         'ingredient': data[i].ingredient,
-                         'image': data[i].image,
-                         'brand': data[i].brand,
-                         'price': data[i].price,
+            idx = ffflist[i][1]
+            result[i] = {'prdname': data2[idx].prdname,
+                         'ingredient': data[idx].ingredient,
+                         'image': data[idx].image,
+                         'brand': data[idx].brand,
+                         'price': data[idx].price,
                          'cosine': str(ffflist[i][0])}
         return result
 
