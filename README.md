@@ -83,7 +83,7 @@ Q&A 리스트, Q&A 작성, Q&A 수정,
 3) generic views 
     - mixin의 경우, 한 class내에 여러 mixin을 상속받아야하기 때문에 불편할 수 있으므로 이를 각  CRUD에 대한 경우의 수를 모두 만들어 놓고 상속받을 수 있도록 함.
     - ex) generics.RetrieveUpdateAPIView : get/put
-    generics.RetrieveUpdateDestoryAPIView : get / put/ delete
+    - generics.RetrieveUpdateDestoryAPIView : get / put/ delete
 4) ViewSets 
     - 라우팅 기능을 제공한다. 
     - queryset을 한번만 지정하여 사용할 수 있다. 
