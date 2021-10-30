@@ -11,6 +11,7 @@ recos - 화장품 추천 서비스
 - cos : 프로젝트 디렉토리(settings.py, celery.py)
 - app : 화장품 데이터 스크래핑 및 업로드(scraping.cos_scraping.py), 화장품 성분 이미지업로드(views.image_upload), 화장품 추천(recommend.py)
 - common : 인증(회원가입(views.signup_views.py) 및 로그인/로그아웃), Q&A(views.qa_views.py)
+- 요구사항은 requirements.txt로 제공됩니다.
 
 ## API - REST API(djangorestframework)
           
