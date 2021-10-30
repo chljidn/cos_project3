@@ -12,3 +12,11 @@ class CosSerializer(serializers.ModelSerializer):
         model = Cos
        # fields = '__all__'
         fields = ('brand', 'price', 'prdname', 'ingredient')
+
+class RecommendSerializer(serializers.Serializer):
+    prdname = serializers.CharField()
+    ingredient = serializers.CharField()
+    image = serializers.CharField()
+    brand = serializers.CharField()
+    price = serializers.CharField()
+    cosine = serializers.CharField()

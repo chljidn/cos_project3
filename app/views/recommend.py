@@ -78,15 +78,15 @@ class recommend:
         for j, k in enumerate(ffflist):
             ffflist[j] = (k, j)
         ffflist = sorted(ffflist, reverse=True)
-        result = {}
+        result = []
         for i in range(10):
             idx = ffflist[i][1]
-            result[i] = {'prdname': data2[idx].prdname,
+            result.append({'prdname': data2[idx].prdname,
                          'ingredient': data[idx].ingredient,
                          'image': data[idx].image,
                          'brand': data[idx].brand,
                          'price': data[idx].price,
-                         'cosine': str(ffflist[i][0])}
+                         'cosine': str(ffflist[i][0])})
         return result
 
 
