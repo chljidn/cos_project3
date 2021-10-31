@@ -92,3 +92,5 @@ recos - 화장품 추천 서비스
 4) ViewSets 
     - 라우팅 기능을 제공한다. 
     - queryset을 한번만 지정하여 사용할 수 있다. 
+    - viewset에 존재하는 함수는 mixin의 함수들을 상속받아 구성되어 있다.
+    - retrieve(get), create(post), update(put), destroy(delete)
