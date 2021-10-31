@@ -1,4 +1,5 @@
 # rest_framework 관련 설치
+from rest_framework import viewsets
 from rest_framework.views import APIView # 모든 함수를 클래스뷰로 하기 위해서 import
 from rest_framework.response import Response
 from rest_framework.renderers import TemplateHTMLRenderer # html 렌더링 하기 위함
@@ -10,8 +11,19 @@ from common import serializers
 from common.models import Qa
 # cache
 from django.core.cache import cache
+from django_filters.rest_framework import DjangoFilterBackend
+from common.filters import filters
 
+class qa(viewsets.ModelViewSet):
+    #permission_classes = [IsAuthenticated]
+    serializer_class = serializers.QaSerializers
+    queryset = Qa.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    # 파라미터 필드 지정
+    filterset_class = QaFilter
 
+'''    
+# APIVIew를 이용한 qa 
 class qa(APIView):
     #renderer_classes = [TemplateHTMLRenderer]
     #template_name = 'common/qa.html' #
@@ -49,3 +61,4 @@ class qa_edit(APIView):
                        postname=request.POST.get('postname'),
                        password=request.POST.get('password'),
                        )
+'''
