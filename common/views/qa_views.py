@@ -12,7 +12,7 @@ from common.models import Qa
 # cache
 from django.core.cache import cache
 from django_filters.rest_framework import DjangoFilterBackend
-from common.filters import filters
+from common.filters import QaFilter
 
 class qa(viewsets.ModelViewSet):
     #permission_classes = [IsAuthenticated]

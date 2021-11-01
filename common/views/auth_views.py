@@ -3,36 +3,27 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.auth.hashers import make_password, check_password
 
-# 각 요청에 대한 허융/거부
 from rest_framework.permissions import IsAuthenticated
-
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from common.serializers import MyTokenObtainPairSerializer
 
-# rest_framework의 authtoken을 이용한 로그인. 토큰 발급
-# 추후 simplejwt로 수정 예상
-class login(ObtainAuthToken):
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data,
-                                           context={'request':request})
-        serializer.is_valid(raise_exception=True)
-        user= serializer.validated_data['user']
-        if user is not None:
-            token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key,
-                            'id': user.username
-                            })
-        else:
-            return Response({'message': '아이디를 다시 입력하세요'})
+from common.models import User
+from common import serializers
 
-class logout(APIView):
-    def get(self, request, format=None):
-        request.user.auth_token.delete()
-        return Response(status=status.HTTP_200_OK)
-
-# -----------------------------------------------------------------
+class signup(APIView):
+    def post(self, request):
+        password = make_password(request.POST['password']) # 패스워드를 해쉬함수를 통해서 암호화
+        user = User.objects.create(username=request.POST['username'],
+                           password=password,
+                           sex=request.POST['sex'],
+                           birth=request.POST['birth'],
+                           email=request.POST['email'])
+        user_get = User.objects.filter(password=password)
+        user_get_serializer = serializers.UserSerializers(user_get, many=True)
+        return Response(user_get_serializer.data)
 
 # login
 # simplejwt을 이용한 Token 발급
@@ -45,7 +36,6 @@ class MyTokenObtainPairView(TokenObtainPairView):
 # 코드 출처 : https://medium.com/django-rest/logout-django-rest-framework-eb1b53ac6d35
 class logout(APIView):
     permission_classes = [IsAuthenticated]
-
     def post(self, reuqest):
         try:
             refresh_token = reuqest.data['refresh']
