@@ -74,7 +74,7 @@ recos - 화장품 추천 서비스
         class MyTokenObtainPairView(TokenObtainPairView):
             ...
             if access is not None:
-                      response = Response({"access": access, "refresh": refresh, "username": username}, status=200)
+                      response = Response({}, status=200)
                       response.set_cookie('token', access, httponly=True)
                       response.set_cookie('refresh', refresh, httponly=True)
                       response.set_cookie('email', username, httponly=True)
