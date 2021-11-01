@@ -76,7 +76,7 @@ recos - 화장품 추천 서비스
 ## views
 
 ### views of rest_framework - APIView, Mixins, genericsAPIView, ViewSets
-* 프로젝트에서는 viewsets을 사용한다. 
+* 프로젝트에서는 평균적으로 viewset, APIView로 이루어져 있다.
 * viewsets의 router 기능을 사용. 
 
 1) APIView 
