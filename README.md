@@ -58,7 +58,7 @@ recos - 화장품 추천 서비스
      > app/serializers.py
 
         # 기존 serializer 상속 후 수정. username이 response 값에 추가된다.
-        class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+        class signup_login(TokenObtainPairSerializer):
             def validate(self, attrs):
                 data = super().validate(attrs)
                 refresh = self.get_token(self.user)
