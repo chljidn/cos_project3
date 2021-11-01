@@ -69,10 +69,18 @@ recos - 화장품 추천 서비스
                 
     > app/views/auth_views.py
 
-        # return : {'access': 'accesstoken', 'refresh':'refreshtoken', 'username': 'username'}
+        # 기존의 TokenObtatinPairView의 post를 오버라이딩하여, set_cookie를 통해서 토큰을 set_cookie 헤더에 담아보낸다.
+        # 코딩 참고 : https://stackoverflow.com/questions/66197928/django-rest-how-do-i-return-simplejwt-access-and-refresh-tokens-as-httponly-coo
         class MyTokenObtainPairView(TokenObtainPairView):
-            serializer_class = MyTokenObtainPairSerializer
+            ...
+            if access is not None:
+                      response = Response({"access": access, "refresh": refresh, "username": username}, status=200)
+                      response.set_cookie('token', access, httponly=True)
+                      response.set_cookie('refresh', refresh, httponly=True)
+                      response.set_cookie('email', username, httponly=True)
+            ...
 
+          
 ## views
 
 ### views of rest_framework - APIView, Mixins, genericsAPIView, ViewSets
