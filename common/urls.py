@@ -1,6 +1,6 @@
 from django.urls import include, path
 from django.conf.urls import url
-from common.views import qa_views, signup_views, auth_views
+from common.views import qa_views, auth_views
 app_name = 'common'
 
 urlpatterns = [
