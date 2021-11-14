@@ -1,8 +1,7 @@
-from rest_framework.authtoken.models import Token
-from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import viewsets
 from django.contrib.auth.hashers import make_password, check_password
 
 from rest_framework.permissions import IsAuthenticated
@@ -10,7 +9,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.http import QueryDict
 
-from common.serializers import MyTokenObtainPairSerializer
+from common.serializers import MyTokenObtainPairSerializer, UserSerializers
 from common.models import User
 
 # signup/login
@@ -20,8 +19,6 @@ from common.models import User
 # set_cookie를 통해서 토큰을 response set-cookie header에 담아보낸다
 # 참고 : https://stackoverflow.com/questions/66197928/django-rest-how-do-i-return-simplejwt-access-and-refresh-tokens-as-httponly-coo
 class signup_login(TokenObtainPairView):
-    #serializer_class = MyTokenObtainPairSerializer
-
     def post(self, request, *args, **kwargs):
         if request.POST.get('email', False):
             password = make_password(request.POST['password'])  # 패스워드를 해쉬함수를 통해서 암호화
@@ -60,3 +57,27 @@ class logout(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+# user 정보
+class myPage(APIView):
+    def get(self, request):
+        if request.user.is_authenticated:
+            user_1 = request.user
+            user = User.objects.filter(username=user_1)
+            user_serializer = UserSerializers(user, many=True)
+            return Response(user_serializer.data)
+
+# user 데이터 수정
+class userEdit(viewsets.ModelViewSet):
+    def update(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            user1 = User.objects.filter(username=request.user.username)
+            user1.update(
+                username=request.user.username,
+                password=make_password(request.data['password']),
+                sex=request.data['sex'],
+                birth=request.data['birth'],
+                email=request.data['email']
+            )
+            return Response(status=200)
+

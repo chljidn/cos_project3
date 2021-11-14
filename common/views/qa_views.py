@@ -15,7 +15,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from common.filters import QaFilter
 
 class qa(viewsets.ModelViewSet):
-    #permission_classes = [IsAuthenticated]
+    # 인증없이 qa를 읽을 수 있도록 함.
+    permission_classes = []
     serializer_class = serializers.QaSerializers
     queryset = Qa.objects.all()
     filter_backends = [DjangoFilterBackend]
