@@ -1,7 +1,7 @@
 # cos_project3(RECOS)
 
-recos - 화장품 추천 서비스
-
+- recos - 화장품 추천 서비스
+- 프론트(Vue) 작성 git URL : https://github.com/chljidn/cos_project_f
 ## Introduction
 
 - 화장품 성분에 대한 이미지가 업로드되면 이미지에서 성분을 읽어낸 후, 기존 데이터베이스에 존재하는 화장품 목록에서 성분표가 유사한 화장품을 추천하는 서비스 입니다.
