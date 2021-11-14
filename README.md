@@ -1,4 +1,4 @@
-# cos_project3(RECOS)
+# RECOS
 
 - recos - 화장품 추천 서비스
 - 프론트(Vue) 작성 git URL : https://github.com/chljidn/cos_project_f
