@@ -27,14 +27,11 @@ class Cos(models.Model):
         managed = False
         db_table = 'cos'
 
-
-
-# -------- 좋아요 기능을 위한 모델.
+# 좋아요 기능을 위한 모델.
 # common.User 모델 생성후 정의할 것.
+class cos_like(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    cos = models.ForeignKey(Cos, on_delete=models.CASCADE)
 
-#class cos_like(models.Model):
-#    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#    cos = models.ForeignKey(Cos, on_delete=models.CASCADE)
-
-#    class Meta:
-#        db_table='cos_like
+    class Meta:
+        db_table='cos_like'

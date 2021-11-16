@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'rest_framework',
     'django_celery_results',
+    # pip install django-cors-headers 필요
     'corsheaders',
     'django_filters',
     'rest_framework.authtoken',
@@ -190,7 +191,7 @@ CORS_ALLOW_CREDENTIALS = True
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend'),
     # pagination
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 60,
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # simplejwt
@@ -205,7 +206,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'BLACKLIST_AFTER_ROTATION':False,
-
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
 }

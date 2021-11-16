@@ -33,16 +33,19 @@ class signup_login(TokenObtainPairView):
 
         serializer = MyTokenObtainPairSerializer(data=user_data)
         serializer.is_valid(raise_exception=True)
-        access = serializer.validated_data.get("access", None)
-        refresh = serializer.validated_data.get("refresh", None)
-        username = serializer.validated_data.get("username", None)
 
-        if access is not None:
-            response = Response({}, status=200)
-            response.set_cookie('token', access, httponly=True)
-            response.set_cookie('refresh', refresh, httponly=True)
-            response.set_cookie('email', username, httponly=True)
-            return response
+        return Response(serializer.validated_data)
+
+        # # jwt를 set-cookie 헤더에 담아 보내기 위함.
+        # access = serializer.validated_data.get("access", None)
+        # refresh = serializer.validated_data.get("refresh", None)
+        # username = serializer.validated_data.get("username", None)
+        # if access is not None:
+        #     response = Response({}, status=200)
+        #     response.set_cookie('token', access, httponly=True)
+        #     response.set_cookie('refresh', refresh, httponly=True)
+        #     response.set_cookie('email', username, httponly=True)
+        #     return response
 
 # logout
 # 형식은 refresh token을 받아서 blacklist에 추가시키는 것. refresh token은 content 부분에 담겨 보내진다.

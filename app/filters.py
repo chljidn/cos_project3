@@ -5,8 +5,8 @@ from app.models import Cos
 from django_filters import rest_framework as filters
 
 class CosFilter(filters.FilterSet):
-    min_id = filters.NumberFilter(field_name="id", lookup_expr='gte')
-    max_id = filters.NumberFilter(field_name="id", lookup_expr='lte')
+    #min_id = filters.NumberFilter(field_name="id", lookup_expr='gte')
+    #max_id = filters.NumberFilter(field_name="id", lookup_expr='lte')
 
     class Meta:
         model = Cos

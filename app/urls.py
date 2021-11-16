@@ -8,5 +8,6 @@ router.register(r'cos_list', app_views.cos_list, basename='cos_list')
 router.register(r'upload', app_views.image_upload, basename='upload')
 
 urlpatterns = [
+    path('coslike/', app_views.cosLike.as_view(), name='coslike'),
     path('', include(router.urls))
 ]

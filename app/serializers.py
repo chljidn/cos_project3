@@ -10,8 +10,7 @@ class ImageUploadSerializer(serializers.ModelSerializer):
 class CosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cos
-       # fields = '__all__'
-        fields = ('brand', 'price', 'prdname', 'ingredient')
+        fields = '__all__'
 
 class RecommendSerializer(serializers.Serializer):
     prdname = serializers.CharField()
