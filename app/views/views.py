@@ -30,7 +30,6 @@ class image_upload(viewsets.ViewSet):
         result_serializer = RecommendSerializer(result, many=True)
         return Response(result_serializer.data)
 
-
 # 화장품 리스트 페이지
 class cos_list(viewsets.ModelViewSet):
     permission_classes = []
@@ -39,6 +38,7 @@ class cos_list(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = CosFilter
 
+# 화장품 '좋아요' 기능
 class cosLike(APIView):
     def post(self, request):
         cos = Cos.objects.get(pk=request.data['pk'])
