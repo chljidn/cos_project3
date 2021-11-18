@@ -75,6 +75,10 @@ class userEdit(viewsets.ModelViewSet):
     def update(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             user1 = User.objects.filter(username=request.user.username)
+            if request.data['password'] is None:
+                password = user1[0].password
+            else:
+                password = make_password(request.data['password'])
             user1.update(
                 username=request.user.username,
                 password=make_password(request.data['password']),
