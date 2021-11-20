@@ -82,11 +82,11 @@ class recommend:
         for i in range(10):
             idx = ffflist[i][1]
             result.append({'prdname': data2[idx].prdname,
-                         'ingredient': data[idx].ingredient,
-                         'image': data[idx].image,
-                         'brand': data[idx].brand,
-                         'price': data[idx].price,
-                         'cosine': str(ffflist[i][0])})
+                           'ingredient': data2[i].ingredient,
+                           'image': data2[i].image,
+                           'brand': data2[i].brand,
+                           'price': data2[i].price,
+                           'cosine': str(ffflist[i][0])})
         return result
 
 
