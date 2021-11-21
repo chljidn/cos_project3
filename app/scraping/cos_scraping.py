@@ -18,7 +18,7 @@ class scraping:
 
     def __init__(self, idx):
         self.redis3 = redis.StrictRedis(host='127.0.0.1', port=6379, db=3)  # 상세 페이지 html 가져오기 위함
-        self.redis4 = redis.StrictRedis(host='localhost', port=6379, db=4)  # 각 상품 딕셔너리 저장하기 위함
+        self.redis4 = redis.StrictRedis(host='127.0.0.1', port=6379, db=4)  # 각 상품 딕셔너리 저장하기 위함
         self.idx = idx  # 입력 받은 idx부터 시작할 수 있도록 함
         lobs_html = self.lobs()
         self.preprocessing()

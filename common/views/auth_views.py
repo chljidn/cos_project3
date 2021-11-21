@@ -20,26 +20,24 @@ from common.models import User
 # 참고 : https://stackoverflow.com/questions/66197928/django-rest-how-do-i-return-simplejwt-access-and-refresh-tokens-as-httponly-coo
 class signup_login(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
-        if request.POST.get('email', False):
-            password = make_password(request.POST['password'])  # 패스워드를 해쉬함수를 통해서 암호화
-            user = User.objects.create(username=request.POST['username'],
+        if request.data.get('email', False):
+            password = make_password(request.data['password'])  # 패스워드를 해쉬함수를 통해서 암호화
+            user = User.objects.create(username=request.data['username'],
                                        password=password,
-                                       sex=request.POST['sex'],
-                                       birth=request.POST['birth'],
-                                       email=request.POST['email'])
-            user_data = QueryDict(f'''username={request.POST['username']}&password={request.POST['password']}''')
+                                       sex=request.data['sex'],
+                                       birth=request.data['birth'],
+                                       email=request.data['email'])
+            user_data = QueryDict(f'''username={request.data['username']}&password={request.data['password']}''')
         else:
             user_data = request.data
 
         serializer = MyTokenObtainPairSerializer(data=user_data)
         serializer.is_valid(raise_exception=True)
 
+        access = serializer.validated_data.get("access", None)
+        refresh = serializer.validated_data.get("refresh", None)
+        username = serializer.validated_data.get("username", None)
         return Response(serializer.validated_data)
-
-        # # jwt를 set-cookie 헤더에 담아 보내기 위함.
-        # access = serializer.validated_data.get("access", None)
-        # refresh = serializer.validated_data.get("refresh", None)
-        # username = serializer.validated_data.get("username", None)
         # if access is not None:
         #     response = Response({}, status=200)
         #     response.set_cookie('token', access, httponly=True)

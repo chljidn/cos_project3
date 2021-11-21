@@ -181,8 +181,8 @@ CELERY_TIMEZONE = 'Asia/Seoul'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # vue와 csrftoken 설정 맞추기
-CSRF_COOKIE_NAME = 'XSRF-TOKEN'
-CSRF_HEADER_NAME = 'X-XSRF-TOKEN'
+# CSRF_COOKIE_NAME = 'XSRF-TOKEN'
+# CSRF_HEADER_NAME = 'X-XSRF-TOKEN'
 # cros 정책 관련(실제 서비스 할 때에는 true X. 직접 지정 필요.)
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
