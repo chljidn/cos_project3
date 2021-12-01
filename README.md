@@ -13,9 +13,19 @@
 - common : 인증(회원가입(views.signup_views.py) 및 로그인/로그아웃), Q&A(views.qa_views.py)
 - 요구사항은 requirements.txt로 제공됩니다.
 
+## Docker 
+* 현재 도커로 다시 구성 중
+* Docker Compose를 사용하여 컨테이너 어플리케이션을 정의 및 관리한다.
+* Docker 내에서 사용가능한 버전의 문제로 djangorestframework-simplejwt==4.4.0, PyJWT==1.7.1 버전을 사용한다.
+
 ## API - REST API(djangorestframework)
+
+### Rest 
+* API 서버로의 요청 및 API 서버의 응답은 HTTP 프로토콜을 따른다. 
+* HTTP method는 Get, Post, Put, Delete가 사용된다.
+* 각 API를 구분하는 요소로 URI를 사용한다. -
           
-### APP
+### APP directory
 
 #### 스크래핑 - requests_html, celery
    > worker 실행
@@ -37,7 +47,7 @@
 * 기존에 존재하는 데이터에서 코사인 유사도를 측정하며, 그 중에 가장 유사도가 높은 10개를 반환하므로 반환되는 코사인 유사도가 모두 높음을 보장하지 않음.
 
 
-### common
+### common directory
 
 #### 인증(회원가입 및 로그인/ 로그아웃) - JsonWebToken
 1. 세션 방식(Session Authentication)
