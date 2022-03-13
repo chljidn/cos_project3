@@ -13,6 +13,15 @@
 - common : 인증(회원가입(views.signup_views.py) 및 로그인/로그아웃), Q&A(views.qa_views.py)
 - 요구사항은 requirements.txt로 제공됩니다.
 
+## 스택
+    python 3.8
+    MariaDB
+    Docker
+    requests_html
+    TesseractOCR
+    Redis
+    Celery
+
 ## Docker 
 * 현재 도커로 다시 구성 중
 * Docker Compose를 사용하여 컨테이너 어플리케이션을 정의 및 관리한다.
